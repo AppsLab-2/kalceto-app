@@ -7,6 +7,10 @@ KalcetoTourney
 -názov appky
 -login - meno a heslo používateľa
 
+<img src=https://github.com/AppsLab-2/kalceto-app/blob/master/Login_Appky.png>
+
+
+
 2.po logine(hlavná stránka)
 -nadpis (názov appky?,hlavné menu?)
 -tabuľka so všetkými hráčmi(po prihlásení ako admin možnosť pridávať hráčov do zápasov/vytvárať zápasy(invite button))
