@@ -19,7 +19,7 @@ KalcetoTourney
 -pole na pridávanie hráčov(po stlačení submit sa hráč so zadaným menom pridá do ligy)
 -tabuľka s pridanými hráčmi
 -tlačidlo generate(po stlačení sa automaticky vygenerujú zápasy(každý proti každému))
-<img src=https://github.com/AppsLab-2/kalceto-app/blob/master/Vytvorenie_ligy.png>
+<img src=https://github.com/AppsLab-2/kalceto-app/blob/master/Novaliga.png>
 
 2.2 informácie k špecifickej lige
 -názov ligy
