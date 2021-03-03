@@ -6,7 +6,7 @@ KalcetoTourney
 1.login
 -názov appky
 -login - meno a heslo používateľa
-<img src=https://github.com/AppsLab-2/kalceto-app/blob/master/Login_Appky.png>
+<img src=https://github.com/AppsLab-2/kalceto-app/blob/master/unknown.png>
 
 2.hlavna stranka
 -nejaký nadpis(názov appky, main menu,...)
