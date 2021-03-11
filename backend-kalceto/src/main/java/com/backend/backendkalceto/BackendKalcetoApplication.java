@@ -8,7 +8,7 @@ public class BackendKalcetoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendKalcetoApplication.class, args);
-		System.out.println("adsfdsf");
+		System.out.println("TestTest");
 	}
 
 }
