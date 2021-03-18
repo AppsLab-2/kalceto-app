@@ -19,7 +19,7 @@ public class Player {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "playersInLeagues",
+            name = "players_leagues",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "league_id"))
     Set<League> leagues;
@@ -31,6 +31,7 @@ public class Player {
         this.draws = draws;
         this.goals = goals;
     }
+    public Player() {}
 
     public String getName() {
         return name;

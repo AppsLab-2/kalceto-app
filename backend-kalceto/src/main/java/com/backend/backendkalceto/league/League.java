@@ -20,6 +20,7 @@ public class League {
     public League(String leagueName) {
         this.leagueName = leagueName;
     }
+    public League() {}
 
     public String getLeagueName() {
         return leagueName;

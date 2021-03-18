@@ -2,6 +2,8 @@ package com.backend.backendkalceto.league;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class LeagueServiceImpl implements LeagueService{
 
@@ -14,5 +16,10 @@ public class LeagueServiceImpl implements LeagueService{
     @Override
     public void saveLeague(League league) {
         leagueRepository.save(league);
+    }
+
+    @Override
+    public Optional<League> getLeagueById(long id) {
+        return leagueRepository.findById(id);
     }
 }
