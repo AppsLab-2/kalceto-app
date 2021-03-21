@@ -24,7 +24,7 @@ public class LeagueController {
         leagueService.saveLeague(league);
     }
 
-    @PostMapping(value = "/addPlayer")
+    @PostMapping(value = "/assignPlayerToLeagues")
     public void request(@RequestParam long leagueId, @RequestParam long playerId) {
         League league = leagueService.getLeagueById(leagueId).get();
         Player player = playerService.getPlayerById(playerId).get();
