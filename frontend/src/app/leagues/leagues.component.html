@@ -17,11 +17,9 @@
 			<div id="main_kontext">
 				<nav id="main_navi">
 					<ul id="main_kontext_bunky">
-                        <li *ngFor="let match of leagues" 
-                        [class.selected]="match === selectedMatch" 
-                        (click)="onSelect(match)">
+                        <li>
 						<a [routerLink]="'/my-league'"></a>
-                        <span class="badge">{{match.id}}</span> {{match.name}}
+                        <span class="badge"></span>
                         </li>
 					</ul>
 				</nav>	

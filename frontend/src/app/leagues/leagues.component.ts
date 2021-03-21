@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Match } from '../league';
 
 @Component({
   selector: 'app-leagues',
@@ -8,17 +7,11 @@ import { Match } from '../league';
 })
 export class LeaguesComponent implements OnInit {
 
-  leagues: Match[] = [];
-  selectedMatch?: Match;
 
   constructor() { }
 
   ngOnInit(): void {
     
-  }
-
-  onSelect(match: Match): void {
-    this.selectedMatch = match;
   }
 
 }

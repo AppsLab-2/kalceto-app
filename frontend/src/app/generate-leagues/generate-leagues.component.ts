@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Match } from '../league';
 
 @Component({
   selector: 'app-generate-leagues',

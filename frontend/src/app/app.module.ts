@@ -10,7 +10,6 @@ import { GenerateLeaguesComponent } from './generate-leagues/generate-leagues.co
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { MyLeagueComponent } from './my-league/my-league.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
 
@@ -27,9 +26,6 @@ import { EditMatchComponent } from './edit-match/edit-match.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-    InMemoryDataService, { dataEncapsulation: false }
-    )
   ],
   providers: [],
   bootstrap: [AppComponent]

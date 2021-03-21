@@ -1,4 +1,7 @@
-export interface Match {
+import { Player } from "./player";
+
+export interface League {
     id: number;
-    name: string;
+    leagueName: string;
+    players: Player[];
 }
