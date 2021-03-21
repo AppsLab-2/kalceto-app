@@ -1,0 +1,59 @@
+<head>
+	<title>Main</title>
+
+	
+</head>
+<body>
+
+	<div id="header">
+		<div id="header_rozmer">
+			<div id="header_kontext">
+				<p>Ligy</p>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<div id="main_rozmer">
+			<div id="main_kontext">
+				<nav id="main_navi">
+					<ul id="main_kontext_bunky">
+                        <li *ngFor="let match of leagues" 
+                        [class.selected]="match === selectedMatch" 
+                        (click)="onSelect(match)">
+						<a [routerLink]="'/my-league'"></a>
+                        <span class="badge">{{match.id}}</span> {{match.name}}
+                        </li>
+					</ul>
+				</nav>	
+				<div id="main_kontext_button">
+					<div id="main_rozmer_button">
+                        <nav>
+                            <a [routerLink]="'/generate-leagues'"><button><span class="button_p"><i class="fa fa-plus-circle" aria-hidden="true"></i><p class="pridat">Pridať novú ligu</p></span></button></a>
+                        </nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="footer_rozmer">
+		
+			<div id="footer_rozmer_kontext">
+				<div id="roc_praca">
+					<div id="roc_praca_rozmer">
+						<p class="pridat">Siemens Healthieners</p>
+					</div>
+				</div>
+				<div class="animacia">
+					<div>
+						<p>@Filip Šupolik<br>@Martin Štrbánik</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+</body>
+

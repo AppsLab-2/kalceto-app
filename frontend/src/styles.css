@@ -1,0 +1,219 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+	margin:0px;
+	padding:0px;
+}
+p{
+	
+}
+#header{
+	top: 0px;
+	position: sticky;
+	min-width: 800px;
+	height: 200px;
+	
+	background-color: black;
+
+	border-bottom: 2px solid grey;
+}
+#header_rozmer{
+	width: 400px;
+	height: 150px;
+
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+#header_kontext{
+	width: 100%;
+
+	padding-top: %;
+	padding-bottom: %;
+}
+#header_kontext p{
+	width: 200px;
+	height: 100px;
+
+	color:white;
+	font-size: 85px;
+	font-weight: bolder;
+	font-style: italic;
+	letter-spacing: 7px;
+	text-shadow: 4px 7.5px 10px white;
+	text-align: center;
+
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#main{
+	min-width: 100%;
+	height: 1000px;
+}
+#main_rozmer{
+	width: 800px;
+	height: 800px;
+
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 75px;
+	padding-bottom: 125px;
+}
+#main_kontext{
+	width: 796px;
+	height: 796px;
+
+	border-width: 2px;
+	border-style: ridge;
+	border-color: black;
+	border-bottom-right-radius: 15px;
+	border-top-left-radius: 15px;
+}
+#main_navi{
+	width: 646px;
+	height: 596px;
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+
+	border:1px solid white;
+	border-bottom-right-radius: 15px;
+	border-top-left-radius: 15px;
+}
+#main_kontext_bunky{
+	overflow: auto;
+	max-height: 91.2%;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 27px;
+	margin-bottom: 25px;
+
+	list-style-type: none;
+}
+li::marker{
+	font-size: 24px;
+}
+#main_kontext_bunky li{
+	width: 95%;
+	height: 38px;
+	overflow-x: auto;
+
+	margin-bottom: 22px;
+	margin-left: auto;
+	margin-right: auto;
+
+	border: 1px solid black;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+#main_kontext_bunky li p{
+	width: 95%;
+	height: 30px;
+
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 20px;
+	margin-right: 20px;
+
+	font-size: 26px;
+}
+#main_kontext_button{
+	width: 650px;
+	height: 98px;
+
+	margin-left: auto;
+	margin-right: auto;
+}
+#main_rozmer_button{
+	width: 250px;
+	height: 40px;
+	float: right;
+	transition-duration: 1s;
+	transition-delay: 0.1s;
+}
+#main_rozmer_button:hover{
+	transition-duration: 1s;
+	transform: translateY(-15%);
+	transition-delay: 0.1s;
+}
+button{
+	width: 100%;
+	height: 40px;
+	cursor: pointer;
+	border-width: 5px;
+	border-style: ridge;
+}
+.button_p{
+	width: 100%;
+	height: 40px;
+	font-size: 25px;
+	/*font-weight: bolder;*/
+}
+#main_kontext_button .fa{
+	margin-left: 10px;
+	float: left;
+	font-size: 30px;
+}
+p.pridat{
+	font-style: italic;
+	font-family:Lobster;
+}
+#footer{
+	min-width: 800px;
+	height: 200px;
+
+	background-color: black;
+	border-top: 2px solid grey;
+}
+#footer_rozmer{
+	/*width: 1050px;*/
+	width: 80%;
+	height: 100%;
+
+	margin-right: auto;
+	margin-left: auto;
+}
+#footer_rozmer_kontext{
+	/*width: 550px;*/
+	width: 80%;
+	height: 150px;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+}
+.animacia{
+	padding-top: 45px;
+	color: white;
+	font-style: italic;
+	font-size: 18px;
+	letter-spacing: 2px;
+	width: 150px;
+	position: relative;
+	animation: mymove 25s infinite;
+	animation-timing-function: linear;
+	
+}
+@keyframes mymove {
+	from {left:-15%;}
+	to {left:100%;}
+}
+#roc_praca{
+	width: 200px;
+	float: right;
+	margin-top: 150px;
+}
+#roc_praca_rozmer{
+	width: 170px;
+	height: 20px;
+}
+#roc_praca_rozmer p{
+	color: white;
+}
