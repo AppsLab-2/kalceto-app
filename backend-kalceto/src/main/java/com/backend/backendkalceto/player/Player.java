@@ -11,7 +11,10 @@ public class Player {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
+    private String username;
     private String name;
+    private String surname;
+    private String password;
     private long wins;
     private long losses;
     private long draws;
@@ -24,13 +27,17 @@ public class Player {
             inverseJoinColumns = @JoinColumn(name = "league_id"))
     Set<League> leagues;
 
-    public Player(String name, long wins, long losses, long draws, long goals) {
+    public Player(String username, String name, String surname, String password, long wins, long losses, long draws, long goals) {
+        this.username = username;
         this.name = name;
+        this.surname = surname;
+        this.password = password;
         this.wins = wins;
         this.losses = losses;
         this.draws = draws;
         this.goals = goals;
     }
+
     public Player() {}
 
     public String getName() {
@@ -79,5 +86,29 @@ public class Player {
 
     public void setLeagues(Set<League> leagues) {
         this.leagues = leagues;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

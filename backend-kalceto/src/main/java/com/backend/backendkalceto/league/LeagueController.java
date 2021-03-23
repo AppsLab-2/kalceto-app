@@ -2,10 +2,7 @@ package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -19,7 +16,7 @@ public class LeagueController {
         this.playerService = playerService;
     }
 
-    @PostMapping(value = "/requestLeague")
+    @PostMapping(value = "/addLeague")
     public void request(@RequestBody League league) {
         leagueService.saveLeague(league);
     }
@@ -33,5 +30,14 @@ public class LeagueController {
         leagueService.saveLeague(league);
     }
 
+    @PostMapping(value = "/deleteLeague")
+    public void request(@RequestParam long leagueId) {
+        leagueService.deleteLeague(leagueId);
+    }
 
+    @GetMapping(value = "/getAllLeagues")
+    public void request() {
+        leagueService.getAllLeagues();
+        System.out.println("test");
+    }
 }

@@ -22,4 +22,9 @@ public class PlayerServiceImpl implements PlayerService{
     public Optional<Player> getPlayerById(long id) {
         return playerRepository.findById(id);
     }
+
+    @Override
+    public void deletePlayer(long playerId) {
+        playerRepository.deleteById(playerId);
+    }
 }

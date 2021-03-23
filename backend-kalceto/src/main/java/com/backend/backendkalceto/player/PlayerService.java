@@ -6,5 +6,6 @@ public interface PlayerService {
 
     void savePlayer(Player player);
     Optional<Player> getPlayerById(long id);
+    void deletePlayer(long playerId);
 
 }

@@ -22,4 +22,14 @@ public class LeagueServiceImpl implements LeagueService{
     public Optional<League> getLeagueById(long id) {
         return leagueRepository.findById(id);
     }
+
+    @Override
+    public void deleteLeague(long leagueId) {
+        leagueRepository.deleteById(leagueId);
+    }
+
+    @Override
+    public void getAllLeagues() {
+        leagueRepository.findAll();
+    }
 }
