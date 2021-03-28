@@ -9,7 +9,13 @@ export class PlayerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createPlayer(player: Player) {
+  addPlayer(player: Player) {
     return this.httpClient.post<Player>("https://localhost:8080/requestPlayer", player)
   }
+
+  deletePlayer(player: Player) {
+    return this.httpClient.post<Player>("https://localhost:8080/requestPlayer", player)
+  }
+
+  
 }

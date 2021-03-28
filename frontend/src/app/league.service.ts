@@ -9,7 +9,13 @@ export class LeagueService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createLeague(league: League) {
+  addLeague(league: League) {
     return this.httpClient.post<League>("https://localhost:8080/requestLeague", league)
   }
+
+  deleteLeague(league: League) {
+    return this.httpClient.post<League>("https://localhost:8080/requestLeague", league)
+    }
+
+
 }
