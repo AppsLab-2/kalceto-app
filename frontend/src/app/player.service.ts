@@ -7,14 +7,20 @@ import { Player } from './player';
 })
 export class PlayerService {
 
+  url = "https://localhost:8080"
+
   constructor(private httpClient: HttpClient) { }
 
+  getPlayer() {
+    return this.httpClient.get<Player>(this.url + "/getAllPlayers");
+  }
+
   addPlayer(player: Player) {
-    return this.httpClient.post<Player>("https://localhost:8080/requestPlayer", player)
+    return this.httpClient.post<Player>(this.url + "/addplayer", player)
   }
 
   deletePlayer(player: Player) {
-    return this.httpClient.post<Player>("https://localhost:8080/requestPlayer", player)
+    return this.httpClient.delete<Player>(`${this.url}/deleteplayer/${player.id}`)
   }
 
   

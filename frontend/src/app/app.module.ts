@@ -9,9 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { GenerateLeaguesComponent } from './generate-leagues/generate-leagues.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MyLeagueComponent } from './my-league/my-league.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { EditMatchComponent } from './edit-match/edit-match.component';
     LeaguesComponent,
     GenerateLeaguesComponent,
     MyLeagueComponent,
-    EditMatchComponent
+    EditMatchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
