@@ -1,6 +1,7 @@
 package com.backend.backendkalceto.player;
 
 import com.backend.backendkalceto.league.League;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -25,6 +26,7 @@ public class Player {
             name = "players_leagues",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "league_id"))
+    @JsonBackReference
     Set<League> leagues;
 
     public Player(String username, String name, String surname, String password, long wins, long losses, long draws, long goals) {
@@ -39,6 +41,14 @@ public class Player {
     }
 
     public Player() {}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

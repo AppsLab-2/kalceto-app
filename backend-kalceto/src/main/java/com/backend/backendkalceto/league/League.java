@@ -1,6 +1,7 @@
 package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.player.Player;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,6 +15,7 @@ public class League {
     private String leagueName;
 
     @ManyToMany(mappedBy = "leagues", cascade = CascadeType.ALL)
+    @JsonManagedReference
     Set<Player> players;
 
 
@@ -21,6 +23,14 @@ public class League {
         this.leagueName = leagueName;
     }
     public League() {}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getLeagueName() {
         return leagueName;
