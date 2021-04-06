@@ -2,6 +2,7 @@ package com.backend.backendkalceto.league;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,7 +30,7 @@ public class LeagueServiceImpl implements LeagueService{
     }
 
     @Override
-    public void getAllLeagues() {
-        leagueRepository.findAll();
+    public List<League> getAllLeagues() {
+        return (List<League>) leagueRepository.findAll();
     }
 }

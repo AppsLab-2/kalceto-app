@@ -4,6 +4,7 @@ import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,8 +37,9 @@ public class LeagueController {
     }
 
     @GetMapping(value = "/getAllLeagues")
-    public void request() {
-        leagueService.getAllLeagues();
-        System.out.println("test");
+    public List<League> request() {
+        return leagueService.getAllLeagues();
     }
+
+
 }
