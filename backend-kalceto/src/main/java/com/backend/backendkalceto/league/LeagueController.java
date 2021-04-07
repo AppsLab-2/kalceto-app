@@ -2,6 +2,7 @@ package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class LeagueController {
     LeagueService leagueService;
     PlayerService playerService;
 
+    @Autowired
     public LeagueController(LeagueService leagueService, PlayerService playerService) {
         this.leagueService = leagueService;
         this.playerService = playerService;
@@ -41,5 +43,11 @@ public class LeagueController {
         return leagueService.getAllLeagues();
     }
 
+    @PostMapping(value = "/changeLeagueName")
+    public void request(@RequestParam long leagueId, @RequestParam String leagueName) {
+        League league = leagueService.getLeagueById(leagueId).get();
+        league.setLeagueName(leagueName);
+        leagueService.saveLeague(league);
+    }
 
 }

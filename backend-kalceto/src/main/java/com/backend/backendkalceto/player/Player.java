@@ -1,12 +1,14 @@
 package com.backend.backendkalceto.player;
 
 import com.backend.backendkalceto.league.League;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Player {
 
     @Id
@@ -26,7 +28,6 @@ public class Player {
             name = "players_leagues",
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "league_id"))
-    @JsonBackReference
     Set<League> leagues;
 
     public Player(String username, String name, String surname, String password, long wins, long losses, long draws, long goals) {

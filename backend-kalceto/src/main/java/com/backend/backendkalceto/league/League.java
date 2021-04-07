@@ -1,12 +1,14 @@
 package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.player.Player;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class League {
 
     @Id
@@ -15,7 +17,6 @@ public class League {
     private String leagueName;
 
     @ManyToMany(mappedBy = "leagues", cascade = CascadeType.ALL)
-    @JsonManagedReference
     Set<Player> players;
 
 

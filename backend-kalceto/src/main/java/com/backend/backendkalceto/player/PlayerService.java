@@ -1,5 +1,7 @@
 package com.backend.backendkalceto.player;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Optional;
 
 public interface PlayerService {
