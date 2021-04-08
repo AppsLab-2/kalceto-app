@@ -1,5 +1,8 @@
 package com.backend.backendkalceto.league;
 
+import com.backend.backendkalceto.player.Player;
+import com.backend.backendkalceto.player.PlayerService;
+import com.backend.backendkalceto.player.PlayerServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +12,11 @@ import java.util.Optional;
 public class LeagueServiceImpl implements LeagueService{
 
     LeagueRepository leagueRepository;
+    PlayerService playerService;
 
-    public LeagueServiceImpl(LeagueRepository leagueRepository) {
+    public LeagueServiceImpl(LeagueRepository leagueRepository, PlayerService playerService) {
         this.leagueRepository = leagueRepository;
+        this.playerService = playerService;
     }
 
     @Override
@@ -32,5 +37,14 @@ public class LeagueServiceImpl implements LeagueService{
     @Override
     public List<League> getAllLeagues() {
         return leagueRepository.findAll();
+    }
+
+    @Override
+    public void assignPlayerToLeagues(long leagueId, long playerId) {
+        League league = getLeagueById(leagueId).get();
+        Player player = playerService.getPlayerById(playerId).get();
+        player.getLeagues().add(league);
+        league.getPlayers().add(player);
+        saveLeague(league);
     }
 }
