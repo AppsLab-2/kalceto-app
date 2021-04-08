@@ -12,8 +12,4 @@ public class MatchesController {
         this.matchService = matchService;
     }
 
-    @PostMapping(value = "/addMatch")
-    public void addMatch(@RequestBody Matches match){
-        matchService.saveMatch(match);
-    }
 }
