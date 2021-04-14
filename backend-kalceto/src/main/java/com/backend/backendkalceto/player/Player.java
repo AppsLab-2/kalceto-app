@@ -1,6 +1,7 @@
 package com.backend.backendkalceto.player;
 
 import com.backend.backendkalceto.league.League;
+import com.backend.backendkalceto.matches.Matches;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -29,6 +30,12 @@ public class Player {
             joinColumns = @JoinColumn(name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "league_id"))
     Set<League> leagues;
+
+    @OneToMany(mappedBy="player1")
+    private Set<Matches> matches1;
+
+    @OneToMany(mappedBy="player2")
+    private Set<Matches> matches2;
 
     public Player(String username, String name, String surname, String password, long wins, long losses, long draws, long goals) {
         this.username = username;
