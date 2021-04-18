@@ -10,60 +10,17 @@
     <div class="main_stred">
         <div class="vpravo">
             <div id="kontext">
-                <ul>
-                    <li>
-                        <p>Player1</p>
-                    </li>
-                    <li>
-                        <p>Player2</p>
-                    </li>
-                    <li>
-                        <p>Player3</p>
-                    </li>
-                    <li>
-                        <p>Player4</p>
-                    </li>
-                    <li>
-                        <p>Player5</p>
-                    </li>
-                    <li>
-                        <p>Player6</p>
-                    </li>
-                    <li>
-                        <p>Player7</p>
-                    </li>
-                    <li>
-                        <p>Player8</p>
-                    </li>
-                    <li>
-                        <p>Player9</p>
-                    </li>
-                    <li>
-                        <p>Player10</p>
-                    </li>
-                    <li>
-                        <p>Player11</p>
-                    </li>
-                    <li>
-                        <p>Player12</p>
-                    </li>
-                    <li>
-                        <p>Player13</p>
-                    </li>
-                    <li>
-                        <p>Player14</p>
-                    </li>
-                </ul>
             </div>
         </div>
         <div class="vlavo">
             <div class="vlavo_obsah">
-                <input type="text" name="" class="text" placeholder="  Name:">
-                
-                <input type="submit" name="" class="odoslanie">
-
+                <form [formGroup]="leagueForm" (ngSubmit)="add()">
+                    <input type="text" class="text" placeholder="Name:" formControlName="leagueName">
+                    <button type="submit" [disabled]="!submit">Pridať ligu</button>
+                </form>
             </div>
-            <a [routerLink]="'/leagues'"><button><span class="button_p"><i class="fa fa-plus-circle" aria-hidden="true"></i><p class="pridat">Pridať novú ligu</p></span></button></a>
+            <input for="new-league" #leagueName >
+            <a [routerLink]="'/leagues'"><button class="add-button"><span class="button_p"><i class="fa fa-plus-circle" aria-hidden="true"></i><p class="pridat">Vytvoriť novú ligu</p></span></button></a>
         </div>
     </div>
     <!-- generovanie -->

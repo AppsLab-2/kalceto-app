@@ -15,8 +15,9 @@ public class LeagueServiceImpl implements LeagueService{
     }
 
     @Override
-    public void saveLeague(League league) {
+    public League saveLeague(League league) {
         leagueRepository.save(league);
+        return league;
     }
 
     @Override

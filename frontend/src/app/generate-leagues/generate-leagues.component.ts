@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { League } from '../league';
+import { LeagueService } from '../league.service';
 
 
 @Component({
@@ -9,9 +11,22 @@ import { Observable } from 'rxjs';
 })
 export class GenerateLeaguesComponent implements OnInit {
 
-  constructor() { }
+  leagueForm = new FormGroup({
+    leagueName: new FormControl("", Validators.required)
+  });
 
-  ngOnInit(): void {
+  get submit(): boolean {
+    return this.leagueForm.valid;
   }
 
+  constructor(private leaguesService: LeagueService) { }
+
+  ngOnInit(): void {}
+
+  add(): void {
+    const league = {
+      leagueName: this.leagueForm.controls.leagueName.value
+    }
+    this.leaguesService.addLeague(league as League).subscribe();
+  }
 }

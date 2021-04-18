@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { League } from '../league';
 import { LeagueService } from '../league.service';
 
@@ -9,11 +10,11 @@ import { LeagueService } from '../league.service';
 })
 export class LeaguesComponent implements OnInit {
 
-
   constructor(private leaguesService: LeagueService) { }
   
-  leagues:League | undefined;
+  leagues?: Observable<League[]>;
+
   ngOnInit(): void {
-    
+    this.leagues = this.leaguesService.getLeagues();
   }
 }

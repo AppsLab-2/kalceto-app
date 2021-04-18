@@ -7,21 +7,19 @@ import { League } from './league';
 })
 export class LeagueService { 
 
-  url = "https://localhost:8080";
+  url = "http://localhost:8080";
 
   constructor(private httpClient: HttpClient) { }
 
   getLeagues() {
-    return this.httpClient.get<League>(this.url + "/getAllLeagues");
+    return this.httpClient.get<League[]>(this.url + "/getAllLeagues");
   }
 
   addLeague(league: League) {
-    return this.httpClient.post<League>(this.url + "/addLeague" , league)
+    return this.httpClient.post(this.url + "/addLeague", league);
   }
 
   deleteLeague(league: League) {
     return this.httpClient.delete<League>(`${this.url}/deleteLeague/${league.id}`)
-    }
-
-
+  }
 }

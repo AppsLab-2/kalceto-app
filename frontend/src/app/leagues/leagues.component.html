@@ -15,24 +15,9 @@
 	<div id="main">
 		<div id="main_rozmer">
 			<div id="main_kontext">
-				<nav id="main_navi">
-					<ul id="main_kontext_bunky">
-                        <li><p>League1</p></li>
-						<li><p>League2</p></li>
-						<li><p>League3</p></li>
-						<li><p>League4</p></li>
-						<li><p>League5</p></li>
-						<li><p>League6</p></li>
-						<li><p>League7</p></li>
-						<li><p>League8</p></li>
-						<li><p>League9</p></li>
-						<li><p>League10</p></li>
-						<li><p>League11</p></li>
-						<li><p>League12</p></li>
-						<li><p>League13</p></li>
-						<li><p>League14</p></li>
-						<li><p>League15</p></li>
-						<li><p>League16</p></li>
+				<nav id="main_navi" *ngIf="leagues">
+					<ul id="main_kontext_bunky" *ngFor="let league of leagues | async">
+                        <p>{{ league.leagueName }}</p>
 					</ul>
 				</nav>	
 				<div id="main_kontext_button">
