@@ -36,7 +36,7 @@ public class LeagueServiceImpl implements LeagueService{
 
     @Override
     public List<League> getAllLeagues() {
-        return leagueRepository.findAll();
+        return (List<League>) leagueRepository.findAll();
     }
 
     @Override
