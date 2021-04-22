@@ -1,5 +1,6 @@
 package com.backend.backendkalceto.league;
 
+import com.backend.backendkalceto.matches.Matches;
 import com.backend.backendkalceto.player.Player;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -16,13 +17,19 @@ public class League {
     private long id;
     private String leagueName;
 
+    @OneToMany(mappedBy="league")
+    private Set<Matches> matches;
+
     @ManyToMany(mappedBy = "leagues", cascade = CascadeType.ALL)
     Set<Player> players;
 
 
-    public League(String leagueName) {
+    public League(long id, String leagueName, Set<Matches> matches) {
+        this.id = id;
         this.leagueName = leagueName;
+        this.matches = matches;
     }
+
     public League() {}
 
     public long getId() {
@@ -47,5 +54,13 @@ public class League {
 
     public void setPlayers(Set<Player> players) {
         this.players = players;
+    }
+
+    public Set<Matches> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(Set<Matches> matches) {
+        this.matches = matches;
     }
 }

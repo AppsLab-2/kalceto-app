@@ -1,10 +1,9 @@
 package com.backend.backendkalceto.player;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class PlayerController {
@@ -16,19 +15,24 @@ public class PlayerController {
     }
 
     @PostMapping(value = "/addPlayer")
-    public void request(@RequestBody Player player){
+    public void addPlayer(@RequestBody Player player){
         playerService.savePlayer(player);
     }
 
     @PostMapping(value = "/setPlayerGoals")
-    public void request(@RequestParam long playerId, @RequestParam long goals) {
+    public void setPlayerGoals(@RequestParam long playerId, @RequestParam long goals) {
         Player player = playerService.getPlayerById(playerId).get();
         player.setGoals(goals);
         playerService.savePlayer(player);
     }
 
     @PostMapping(value = "/deletePlayer")
-    public void request(@RequestParam long playerId) {
+    public void deletePlayer(@RequestParam long playerId) {
         playerService.deletePlayer(playerId);
+    }
+
+    @GetMapping(value = "/getAllPlayers")
+    public List<Player> getAllPlayers() {
+        return playerService.getAllPlayers();
     }
 }
