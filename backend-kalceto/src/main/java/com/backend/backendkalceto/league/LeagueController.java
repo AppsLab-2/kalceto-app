@@ -15,7 +15,10 @@ public class LeagueController {
     }
 
     @PostMapping(value = "/addLeague")
+<<<<<<< HEAD
 
+=======
+>>>>>>> a416a410de8eb4f65f931b51d0d6bf8a87c4da90
     public void addLeague(@RequestBody League league) {
         leagueService.saveLeague(league);
     }
