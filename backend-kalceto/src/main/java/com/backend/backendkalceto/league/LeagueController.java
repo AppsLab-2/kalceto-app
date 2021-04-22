@@ -15,13 +15,9 @@ public class LeagueController {
     }
 
     @PostMapping(value = "/addLeague")
-<<<<<<< HEAD
-    public League request(@RequestBody League league) {
-        return leagueService.saveLeague(league);
-=======
+
     public void addLeague(@RequestBody League league) {
         leagueService.saveLeague(league);
->>>>>>> b331acf0e5f6b98b683a925443e4add21b285811
     }
 
     @PostMapping(value = "/assignPlayerToLeagues")

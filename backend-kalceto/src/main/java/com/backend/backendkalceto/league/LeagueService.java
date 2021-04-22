@@ -1,11 +1,9 @@
 package com.backend.backendkalceto.league;
 
-<<<<<<< HEAD
-=======
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
->>>>>>> b331acf0e5f6b98b683a925443e4add21b285811
+
 import java.util.List;
 import java.util.Optional;
 
