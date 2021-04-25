@@ -11,5 +11,7 @@ public interface PlayerService {
     Optional<Player> getPlayerById(long id);
     void deletePlayer(long playerId);
     List<Player> getAllPlayers();
+    Optional<Player> getPLayerByUsername(String username);
+
 
 }
