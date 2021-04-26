@@ -13,8 +13,8 @@ public class MatchesController {
     }
 
     @PostMapping(value = "/generateMatches")
-    public void generateMatches(@RequestParam long leagueId,@RequestParam long player1Id,@RequestParam long player2Id) {
-        matchService.generateMatch(leagueId, player1Id, player2Id);
+    public void generateMatches(@RequestParam long leagueId) {
+        matchService.generateMatch(leagueId);
     }
 
     @PostMapping(value = "/setMatchScore")

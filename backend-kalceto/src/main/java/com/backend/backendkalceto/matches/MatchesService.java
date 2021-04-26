@@ -1,8 +1,12 @@
 package com.backend.backendkalceto.matches;
 
+import com.backend.backendkalceto.player.Player;
+
+import java.util.Set;
+
 public interface MatchesService {
 
     void saveMatch(Matches match);
-    void generateMatch(long leagueId, long player1Id, long player2Id);
+    void generateMatch(long leagueId);
     void setPlayerScore(long matchId, long player1Score, long player2Score);
 }
