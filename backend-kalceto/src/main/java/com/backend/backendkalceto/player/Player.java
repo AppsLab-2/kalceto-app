@@ -4,6 +4,7 @@ import com.backend.backendkalceto.league.League;
 import com.backend.backendkalceto.matches.Matches;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Player {
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
