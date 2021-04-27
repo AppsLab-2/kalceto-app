@@ -25,12 +25,11 @@ public class MatchesServiceImpl implements MatchesService {
 
     @Override
     public void generateMatch(long leagueId) {
-        int numberOfPlayersInLeague = leagueRepository.findById(leagueId).get().getPlayers().size();
         Set<Player> set = leagueRepository.findById(leagueId).get().getPlayers();
         List<Player> players = new ArrayList<>();
         players.addAll(set);
 
-        for(int i=0; i<numberOfPlayersInLeague; i++){
+        for(int i=0; i<players.size(); i++){
             int one = 1;
             for(int j=one; j<players.size()-i; j++){
                 Matches matches = new Matches();
