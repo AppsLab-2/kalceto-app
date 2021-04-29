@@ -32,3 +32,4 @@ KalcetoTourney
 -tabuľka s odohratými zápasmi s poľami na skóre
 -po vpísaní skóre do políčiek admin klikne na tlačidlo save a skóre sa uloží
 <img src=https://github.com/AppsLab-2/kalceto-app/blob/master/Historia_zapasov2.png>
+
