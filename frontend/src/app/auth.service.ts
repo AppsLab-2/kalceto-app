@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { info } from 'node:console';
-import { url } from 'node:inspector';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,34 +13,32 @@ export class AuthService {
   constructor(
     private readonly httpClient: HttpClient
   ) { }
-}
 
-getToken(): string {
+getToken(): string | undefined {
   return this.token;
 }
 
 isLoggedIn(): boolean {
-  return !!this.Token;
+  return !!this.token;
 }
 
 login(username: string, password: string): Observable<any> {
-  const info = btoa(data: `${username}: ${password}`);
+  const info = btoa(`${username}:${password}`);
   const token = 'Basic ${info}';
-  const oprions = {
-      headers: new  HttpHeaders(headers: {
+  const options = {
+      headers: new  HttpHeaders({
           Authorization: token,
           'x-Requested-With' : 'XMLHttpRequest'
       }),
       withCreantials: true
   };
-  return this.httpClient.get(url: 'http://localhost:8080/user', oprions).pipe(
-      tap(next () => this.token = token)
+  return this.httpClient.get('http://localhost:8080/user', options).pipe(
+      tap(() => this.token = token)
   );
 }
 
-logout(): void {
-  this.token = null,
+ logout(): void {
+  this.token = null!;
+ }
+
 }
-
-
-

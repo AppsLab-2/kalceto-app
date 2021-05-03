@@ -15,9 +15,17 @@
         <div class="vlavo">
             <div class="vlavo_obsah">
                 <form [formGroup]="leagueForm" (ngSubmit)="add()">
-                    <input type="text" class="text" placeholder="Name:" formControlName="leagueName">
+                    <input type="text" class="text" placeholder="League:" formControlName="leagueName">
                     <button type="submit" [disabled]="!submit">Pridať ligu</button>
                 </form>
+                <input type="text" class="text" placeholder="Search player:" >
+                <button type="submit">Pridať hráča</button>
+                <div class="form-group">
+                    <label for="palyer">Player</label>
+                    <select class="form-control" 
+                    [(ngModel)]name="new player">
+                </select>
+                </div>
             </div>
             <input for="new-league" #leagueName >
             <a [routerLink]="'/leagues'"><button class="add-button"><span class="button_p"><i class="fa fa-plus-circle" aria-hidden="true"></i><p class="pridat">Vytvoriť novú ligu</p></span></button></a>

@@ -23,18 +23,18 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(this.authService.isLoggedIn()) {
-      request = request.clone(update: {
-        headers: new HttpHeaders(headers {
-          Authorization: this.authService.getToken()
+      request = request.clone( {
+        headers: new HttpHeaders( {
+          Authorization: this.authService.getToken()!
         })
       });
     }
 
     return next.handle(request).pipe(
-      catchError(selector:(err: HttpErrorResponse) => {
+      catchError((err: HttpErrorResponse) => {
         if (this.authService.isLoggedIn() && err.status === 401 ) {
           this.authService.logout();
-          this.router.navigateByUrl(url: '/');
+          this.router.navigateByUrl('/');
         }
         throw err;
       })
