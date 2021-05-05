@@ -4,7 +4,6 @@ import com.backend.backendkalceto.league.League;
 import com.backend.backendkalceto.matches.Matches;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Set;

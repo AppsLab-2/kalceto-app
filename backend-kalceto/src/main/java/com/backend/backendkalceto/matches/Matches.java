@@ -21,21 +21,21 @@ public class Matches {
     private long player1Score;
     private long player2Score;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="league_id", nullable=false, insertable = false, updatable = false)
     private League league;
 
     @Column(name = "league_id")
     private long leagueId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="player1_id", nullable=false, insertable = false, updatable = false)
     private Player player1;
 
     @Column(name = "player1_id")
     private long player1Id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="player2_id", nullable=false, insertable = false, updatable = false)
     private Player player2;
 
