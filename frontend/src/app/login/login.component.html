@@ -1,13 +1,9 @@
-<form class="wrapper-center" [formGroup]="loginGroup" {ngSubmit}="login()" >
-	<form>
+<form class="wrapper-center" [formGroup]="loginGroup" (ngSubmit)="login()" >
 		<label>Username</label>
 		<input natInput formControlName="username" required>
-	</form>
 
-	<form>
 		<label>Password</label>
 		<input natInput formControlName="password" required>
-	</form>
 
 	<button type="submit" [disabled]="!loginGroup.valid">Login</button>
 </form>

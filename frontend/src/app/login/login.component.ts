@@ -13,8 +13,8 @@ import { PlayerService } from '../player.service';
 export class LoginComponent implements OnInit {
 
   loginGroup = new FormGroup( {
-    username: new FormControl(Validators.required),
-    password: new FormControl(Validators.required)
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   constructor(
