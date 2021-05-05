@@ -28,11 +28,11 @@ login(username: string, password: string): Observable<any> {
   const options = {
       headers: new  HttpHeaders({
           Authorization: token,
-          'x-Requested-With' : 'XMLHttpRequest'
+          'X-Requested-With' : 'XMLHttpRequest'
       }),
       withCreantials: true
   };
-  return this.httpClient.get('http://localhost:8080/user', options).pipe(
+  return this.httpClient.get('http://localhost:8080/login', options).pipe(
       tap(() => this.token = token)
   );
 }
