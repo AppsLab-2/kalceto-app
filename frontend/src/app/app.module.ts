@@ -8,10 +8,11 @@ import { LeaguesComponent } from './leagues/leagues.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateLeaguesComponent } from './generate-leagues/generate-leagues.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyLeagueComponent } from './my-league/my-league.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
 import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './interseptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,13 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: AuthInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

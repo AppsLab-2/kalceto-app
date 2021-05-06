@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'generate-leagues', component: GenerateLeaguesComponent  },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch:'full' },
-  { path: 'my-league', component: MyLeagueComponent }
+  { path: 'my-league/:id', component: MyLeagueComponent }
 ];
 
 @NgModule({

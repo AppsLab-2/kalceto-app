@@ -24,7 +24,7 @@ isLoggedIn(): boolean {
 
 login(username: string, password: string): Observable<any> {
   const info = btoa(`${username}:${password}`);
-  const token = 'Basic ${info}';
+  const token = `Basic ${info}`;
   const options = {
       headers: new  HttpHeaders({
           Authorization: token,

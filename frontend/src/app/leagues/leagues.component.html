@@ -18,8 +18,7 @@
 				<nav id="main_navi" *ngIf="leagues">
 					<ul id="main_kontext_bunky" *ngFor="let league of leagues | async">
 						<!-- <button (click)="onSelect(league)"></button> -->
-						<button></button>
-                        <p>{{ league.leagueName }}</p>
+                        <p [routerLink]="['/my-league', league.id]">{{ league.leagueName }}</p>
 					</ul>
 				</nav>	
 				<div id="main_kontext_button">
