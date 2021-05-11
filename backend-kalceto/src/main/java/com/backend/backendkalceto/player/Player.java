@@ -36,6 +36,9 @@ public class Player {
     @OneToMany(mappedBy="player2")
     private Set<Matches> matches2;
 
+    @OneToMany(mappedBy="player")
+    private Set<League> league;
+
     public Player(String username, String password, long wins, long losses, long draws, long goals) {
         this.username = username;
         this.password = password;

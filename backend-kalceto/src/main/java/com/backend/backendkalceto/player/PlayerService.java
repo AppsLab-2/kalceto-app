@@ -12,6 +12,7 @@ public interface PlayerService {
     void deletePlayer(long playerId);
     List<Player> getAllPlayers();
     Optional<Player> getPLayerByUsername(String username);
+    void getSignedInPlayer();
 
 
 }

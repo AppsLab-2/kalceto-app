@@ -30,6 +30,10 @@ public class PlayersDetailsImpl implements UserDetails {
         return this.player.getUsername();
     }
 
+    public long getId(){
+        return this.player.getId();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

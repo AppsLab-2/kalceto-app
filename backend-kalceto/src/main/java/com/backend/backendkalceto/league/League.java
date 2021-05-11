@@ -24,11 +24,20 @@ public class League {
     @ManyToMany(mappedBy = "leagues", cascade = CascadeType.ALL)
     Set<Player> players;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="admin_id", nullable=false, insertable = false, updatable = false)
+    private Player player;
 
-    public League(long id, String leagueName, Set<Matches> matches) {
+    @Column(name = "admin_id")
+    private long adminId;
+
+    public League(long id, String leagueName, Set<Matches> matches, Set<Player> players, Player player, long adminId) {
         this.id = id;
         this.leagueName = leagueName;
         this.matches = matches;
+        this.players = players;
+        this.player = player;
+        this.adminId = adminId;
     }
 
     public League() {}
@@ -63,5 +72,13 @@ public class League {
 
     public void setMatches(Set<Matches> matches) {
         this.matches = matches;
+    }
+
+    public long getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(long adminId) {
+        this.adminId = adminId;
     }
 }

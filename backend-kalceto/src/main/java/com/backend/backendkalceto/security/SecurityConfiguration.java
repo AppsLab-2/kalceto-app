@@ -19,7 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*", "/addPlayer")
+                .antMatchers("/", "index", "/css/*", "/js/*")
                 .permitAll()
 
                 .anyRequest().authenticated()
