@@ -1,6 +1,6 @@
 package com.backend.backendkalceto.matches;
 
-import com.backend.backendkalceto.exception.NoAccessException;
+import com.backend.backendkalceto.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +21,7 @@ public class MatchesController {
     }
 
     @PostMapping(value = "/setMatchScore")
-    public void setMatchScore(@RequestParam long matchId, @RequestParam long player1Score, @RequestParam long player2Score, Principal principal) throws NoAccessException {
+    public void setMatchScore(@RequestParam long matchId, @RequestParam long player1Score, @RequestParam long player2Score, Principal principal) throws GenericException {
         matchService.setPlayerScore(matchId, player1Score, player2Score, principal);
     }
 }

@@ -54,4 +54,14 @@ public class PlayerServiceImpl implements PlayerService {
             String username = principal.toString();
         }
     }
+
+    @Override
+    public boolean ifPlayerExistsByUsername(String username) {
+        if(getPLayerByUsername(username).isPresent()) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

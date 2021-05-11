@@ -13,6 +13,6 @@ public interface PlayerService {
     List<Player> getAllPlayers();
     Optional<Player> getPLayerByUsername(String username);
     void getSignedInPlayer();
-
+    boolean ifPlayerExistsByUsername(String username);
 
 }

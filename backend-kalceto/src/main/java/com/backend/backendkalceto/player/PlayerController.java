@@ -1,5 +1,6 @@
 package com.backend.backendkalceto.player;
 
+import com.backend.backendkalceto.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,15 @@ public class PlayerController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping(value = "/addPlayer")
-    public void addPlayer(@RequestBody Player player){
-        player.setPassword(passwordEncoder.encode(player.getPassword()));
-        playerService.savePlayer(player);
+    @PostMapping(value = "/register")
+    public void register(@RequestBody Player player) throws GenericException {
+        if(playerService.ifPlayerExistsByUsername(player.getUsername())){
+            player.setPassword(passwordEncoder.encode(player.getPassword()));
+            playerService.savePlayer(player);
+        }
+        else
+            throw new GenericException("Username is already in use!");
+
     }
 
     @PostMapping(value = "/setPlayerGoals")

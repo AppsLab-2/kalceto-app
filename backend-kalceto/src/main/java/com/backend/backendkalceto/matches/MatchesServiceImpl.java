@@ -1,18 +1,15 @@
 package com.backend.backendkalceto.matches;
 
-import com.backend.backendkalceto.exception.NoAccessException;
+import com.backend.backendkalceto.exception.GenericException;
 import com.backend.backendkalceto.league.League;
 import com.backend.backendkalceto.league.LeagueRepository;
 import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerService;
-import com.backend.backendkalceto.player.PlayerServiceImpl;
-import com.backend.backendkalceto.security.PlayersDetailsImpl;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -53,7 +50,7 @@ public class MatchesServiceImpl implements MatchesService {
     }
 
     @Override
-    public void setPlayerScore(long matchId, long player1Score, long player2Score, Principal principal) throws NoAccessException {
+    public void setPlayerScore(long matchId, long player1Score, long player2Score, Principal principal) throws GenericException {
         Matches matches = matchRepository.findById(matchId).get();
         League league = leagueRepository.findById(matches.getLeagueId()).get();
 
@@ -64,7 +61,7 @@ public class MatchesServiceImpl implements MatchesService {
             saveMatch(matches);
         }
         else{
-            throw new NoAccessException("User is not the admin of this league");
+            throw new GenericException("User is not the admin of this league");
         }
 
 
