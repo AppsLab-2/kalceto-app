@@ -1,6 +1,7 @@
 package com.backend.backendkalceto.security;
 
 import org.springframework.context.annotation.Bean;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,6 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*", "/addPlayer")
                 .permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
