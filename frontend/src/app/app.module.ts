@@ -13,6 +13,8 @@ import { MyLeagueComponent } from './my-league/my-league.component';
 import { EditMatchComponent } from './edit-match/edit-match.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './interseptor/auth.interceptor';
+import { RouterModule } from '@angular/router';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,16 @@ import { AuthInterceptor } from './interseptor/auth.interceptor';
     GenerateLeaguesComponent,
     MyLeagueComponent,
     EditMatchComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     {
