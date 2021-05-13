@@ -37,7 +37,7 @@ login(username: string, password: string): Observable<any> {
   );
 }
 
- logout(): void {
+ logout() {
   this.token = null!;
  }
 
