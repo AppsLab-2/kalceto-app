@@ -14,7 +14,8 @@ import { EditMatchComponent } from './edit-match/edit-match.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './interseptor/auth.interceptor';
 import { RouterModule } from '@angular/router';
-import { RegistrationComponent } from './registration/registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScrollingModule } from '@angular/cdk/scrolling'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,6 @@ import { RegistrationComponent } from './registration/registration.component';
     MyLeagueComponent,
     EditMatchComponent,
     LoginComponent,
-    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +32,9 @@ import { RegistrationComponent } from './registration/registration.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    ScrollingModule,
   ],
   providers: [
     {

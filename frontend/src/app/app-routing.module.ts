@@ -5,7 +5,6 @@ import { AuthGuard } from './guard/auth.guard';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { LoginComponent } from './login/login.component';
 import { MyLeagueComponent } from './my-league/my-league.component';
-import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   { path: 'leagues', component: LeaguesComponent, canActivate: [AuthGuard] },
@@ -13,7 +12,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch:'full' },
   { path: 'my-league/:id', component: MyLeagueComponent },
-  { path: 'registration', component: RegistrationComponent }
 ];
 
 @NgModule({
