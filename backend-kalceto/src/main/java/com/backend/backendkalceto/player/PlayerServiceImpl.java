@@ -1,5 +1,7 @@
 package com.backend.backendkalceto.player;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PlayerServiceImpl implements PlayerService{
+public class PlayerServiceImpl implements PlayerService {
 
     PlayerRepository playerRepository;
     PasswordEncoder passwordEncoder;
@@ -42,5 +44,24 @@ public class PlayerServiceImpl implements PlayerService{
         return playerRepository.findByUsername(username);
     }
 
+    @Override
+    public void getSignedInPlayer() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+        } else {
+            String username = principal.toString();
+        }
+    }
+
+    @Override
+    public boolean ifPlayerExistsByUsername(String username) {
+        if(getPLayerByUsername(username).isPresent()) {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

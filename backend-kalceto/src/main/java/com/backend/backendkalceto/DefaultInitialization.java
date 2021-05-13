@@ -20,13 +20,13 @@ public class DefaultInitialization implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (playerService.getPLayerByUsername("admin").isEmpty()==true){
-            this.createAndPersistPlayer("admin", "admin", "admin", "admin", 0, 0, 0, 0);
+            this.createAndPersistPlayer("admin", "admin", 0, 0, 0, 0);
         }
     }
 
-    private void createAndPersistPlayer(String username, String name, String surname, String password, long wins, long losses, long draws, long goals) {
+    private void createAndPersistPlayer(String username, String password, long wins, long losses, long draws, long goals) {
             String encodedPassword = this.passwordEncoder.encode(password);
-            Player player = new Player(username, name, surname, encodedPassword, wins, losses, draws, goals);
+            Player player = new Player(username, encodedPassword, wins, losses, draws, goals);
             this.playerService.savePlayer(player);
     }
 

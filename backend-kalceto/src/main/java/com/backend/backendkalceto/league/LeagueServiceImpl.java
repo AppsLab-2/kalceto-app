@@ -5,6 +5,7 @@ import com.backend.backendkalceto.player.PlayerService;
 
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,5 +48,11 @@ public class LeagueServiceImpl implements LeagueService{
         player.getLeagues().add(league);
         league.getPlayers().add(player);
         saveLeague(league);
+    }
+
+    @Override
+    public void createLeague(League league, Principal principal) {
+        league.setAdminId(playerService.getPLayerByUsername(principal.getName()).get().getId());
+        leagueRepository.save(league);
     }
 }

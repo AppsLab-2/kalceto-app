@@ -17,8 +17,6 @@ public class Player {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String username;
-    private String name;
-    private String surname;
     private String password;
     private long wins;
     private long losses;
@@ -38,10 +36,11 @@ public class Player {
     @OneToMany(mappedBy="player2")
     private Set<Matches> matches2;
 
-    public Player(String username, String name, String surname, String password, long wins, long losses, long draws, long goals) {
+    @OneToMany(mappedBy="player")
+    private Set<League> league;
+
+    public Player(String username, String password, long wins, long losses, long draws, long goals) {
         this.username = username;
-        this.name = name;
-        this.surname = surname;
         this.password = password;
         this.wins = wins;
         this.losses = losses;
@@ -57,14 +56,6 @@ public class Player {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public long getWins() {
@@ -113,14 +104,6 @@ public class Player {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public String getPassword() {

@@ -3,6 +3,7 @@ package com.backend.backendkalceto.league;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -15,8 +16,8 @@ public class LeagueController {
     }
 
     @PostMapping(value = "/addLeague")
-    public void addLeague(@RequestBody League league) {
-        leagueService.saveLeague(league);
+    public void addLeague(@RequestBody League league, Principal principal) {
+        leagueService.createLeague(league, principal);
     }
 
     @PostMapping(value = "/assignPlayerToLeagues")
