@@ -57,11 +57,6 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public boolean ifPlayerExistsByUsername(String username) {
-        if(getPLayerByUsername(username).isPresent()) {
-            return false;
-        }
-        else{
-            return true;
-        }
+        return getPLayerByUsername(username).isPresent();
     }
 }

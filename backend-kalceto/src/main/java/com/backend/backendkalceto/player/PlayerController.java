@@ -21,7 +21,7 @@ public class PlayerController {
 
     @PostMapping(value = "/register")
     public void register(@RequestBody Player player) throws GenericException {
-        if(playerService.ifPlayerExistsByUsername(player.getUsername())){
+        if(playerService.ifPlayerExistsByUsername(player.getUsername())==false){
             player.setPassword(passwordEncoder.encode(player.getPassword()));
             playerService.savePlayer(player);
         }

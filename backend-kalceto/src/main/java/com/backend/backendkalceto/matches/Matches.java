@@ -1,14 +1,12 @@
 package com.backend.backendkalceto.matches;
 
 import com.backend.backendkalceto.league.League;
-import com.backend.backendkalceto.matches.Matches;
 import com.backend.backendkalceto.player.Player;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 import javax.persistence.*;
-import java.util.Set;
 
 
 @Entity
@@ -44,15 +42,12 @@ public class Matches {
 
     public Matches() {}
 
-    public Matches(long id, long player1Score, long player2Score, League league, long leagueId, Player player1, long player1Id, Player player2, long player2Id) {
+    public Matches(long id, long player1Score, long player2Score, long leagueId, long player1Id, long player2Id) {
         this.id = id;
         this.player1Score = player1Score;
         this.player2Score = player2Score;
-        this.league = league;
         this.leagueId = leagueId;
-        this.player1 = player1;
         this.player1Id = player1Id;
-        this.player2 = player2;
         this.player2Id = player2Id;
     }
 
