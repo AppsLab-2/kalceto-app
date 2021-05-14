@@ -20,7 +20,7 @@ const PLAYER_DATA: PlayerScore[] = [
   {position: 8, name: 'Player8', wins: 1, loses: 9, draws:7, points:10},
   {position: 9, name: 'Player9', wins: 2, loses: 8, draws:8, points:14},
   {position: 10, name: 'Player10', wins: 0, loses: 10, draws:9, points:9},
-]
+];
 
 @Component({
   selector: 'app-my-league',

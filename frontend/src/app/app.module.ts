@@ -15,7 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './interseptor/auth.interceptor';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScrollingModule } from '@angular/cdk/scrolling'
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling'
     RouterModule,
     BrowserAnimationsModule,
     ScrollingModule,
+    MatTableModule,
   ],
   providers: [
     {
