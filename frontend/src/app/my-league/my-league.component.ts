@@ -1,4 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 export interface PlayerScore {
   position: number;
@@ -31,11 +34,19 @@ export class MyLeagueComponent implements OnInit {
   items = Array.from({length: 100}).map((_, i)=> `Match #${i}`); 
 
   displayColumns: string[] = ['position' , 'name' , 'wins' , 'loses' , 'draws' , 'points'];
-  dataSource = PLAYER_DATA;
+  dataSource = new MatTableDataSource<PlayerScore>(PLAYER_DATA);
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  @ViewChild(MatSort)
+  sort!: MatSort;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
 }

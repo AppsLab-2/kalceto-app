@@ -2,10 +2,17 @@
     height: 200px;
     width: 200px;
     border: 1px solid black;
+    
   }
   .example-item {
     height: 50px;
   }
+  #list_of_matches > p {
+    cursor: pointer;
+  } 
   table {
-    width: 100%;
+    width: 500px;
   }  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
