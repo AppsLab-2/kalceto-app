@@ -1,5 +1,7 @@
 package com.backend.backendkalceto.league;
 
+import com.backend.backendkalceto.exception.GenericException;
+import com.backend.backendkalceto.matches.MatchesService;
 import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerService;
 
@@ -14,10 +16,12 @@ public class LeagueServiceImpl implements LeagueService{
 
     LeagueRepository leagueRepository;
     PlayerService playerService;
+    MatchesService matchesService;
 
-    public LeagueServiceImpl(LeagueRepository leagueRepository, PlayerService playerService) {
+    public LeagueServiceImpl(LeagueRepository leagueRepository, PlayerService playerService, MatchesService matchesService) {
         this.leagueRepository = leagueRepository;
         this.playerService = playerService;
+        this.matchesService = matchesService;
     }
 
     @Override
@@ -32,8 +36,13 @@ public class LeagueServiceImpl implements LeagueService{
     }
 
     @Override
-    public void deleteLeague(long leagueId) {
-        leagueRepository.deleteById(leagueId);
+    public void deleteLeague(long leagueId, Principal principal) throws GenericException {
+        if (playerService.getPLayerByUsername(principal.getName()).get().getId()==leagueRepository.findById(leagueId).get().getAdminId()){
+            leagueRepository.deleteById(leagueId);
+        }
+        else{
+            throw new GenericException("User is not the admin of this league");
+        }
     }
 
     @Override
@@ -54,5 +63,18 @@ public class LeagueServiceImpl implements LeagueService{
     public void createLeague(League league, Principal principal) {
         league.setAdminId(playerService.getPLayerByUsername(principal.getName()).get().getId());
         leagueRepository.save(league);
+    }
+
+    @Override
+    public void changeLeagueName(long leagueId, String leagueName, Principal principal) throws GenericException {
+
+        if (playerService.getPLayerByUsername(principal.getName()).get().getId()==leagueRepository.findById(leagueId).get().getAdminId()){
+            League league = getLeagueById(leagueId).get();
+            league.setLeagueName(leagueName);
+            saveLeague(league);
+        }
+        else{
+            throw new GenericException("User is not the admin of this league");
+        }
     }
 }

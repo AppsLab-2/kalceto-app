@@ -63,7 +63,5 @@ public class MatchesServiceImpl implements MatchesService {
         else{
             throw new GenericException("User is not the admin of this league");
         }
-
-
     }
 }

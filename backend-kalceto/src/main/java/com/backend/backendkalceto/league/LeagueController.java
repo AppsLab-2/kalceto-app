@@ -1,5 +1,6 @@
 package com.backend.backendkalceto.league;
 
+import com.backend.backendkalceto.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,8 @@ public class LeagueController {
     }
 
     @PostMapping(value = "/deleteLeague")
-    public void deleteLeague(@RequestParam long leagueId) {
-        leagueService.deleteLeague(leagueId);
+    public void deleteLeague(@RequestParam long leagueId, Principal principal) throws GenericException {
+        leagueService.deleteLeague(leagueId, principal);
     }
 
     @GetMapping(value = "/getAllLeagues")
@@ -36,10 +37,8 @@ public class LeagueController {
     }
 
     @PostMapping(value = "/changeLeagueName")
-    public void changeLeagueName(@RequestParam long leagueId, @RequestParam String leagueName) {
-        League league = leagueService.getLeagueById(leagueId).get();
-        league.setLeagueName(leagueName);
-        leagueService.saveLeague(league);
+    public void changeLeagueName(@RequestParam long leagueId, @RequestParam String leagueName, Principal principal) throws GenericException {
+        leagueService.changeLeagueName(leagueId, leagueName, principal);
     }
 
 }
