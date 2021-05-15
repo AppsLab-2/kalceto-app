@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { League } from '../league';
-import { LeagueService } from '../league.service';
+import { LeagueService } from '../Services/league.service';
 
 
 @Component({

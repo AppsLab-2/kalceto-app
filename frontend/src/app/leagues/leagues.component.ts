@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { League } from '../league';
-import { LeagueService } from '../league.service';
+import { LeagueService } from '../Services/league.service';
 
 @Component({
   selector: 'app-leagues',
