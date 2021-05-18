@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -63,5 +64,11 @@ public class MatchesServiceImpl implements MatchesService {
         else{
             throw new GenericException("User is not the admin of this league");
         }
+    }
+
+    @Override
+    public List<Matches> getMatchesFromLeague(long leagueId) {
+        List<Matches> matches = matchRepository.findAllByLeagueId(leagueId);
+        return matches;
     }
 }

@@ -59,4 +59,9 @@ public class PlayerServiceImpl implements PlayerService {
     public boolean ifPlayerExistsByUsername(String username) {
         return getPLayerByUsername(username).isPresent();
     }
+
+    @Override
+    public List<Player> getPLayersFromLeague(Long leagueId) {
+        return null;
+    }
 }
