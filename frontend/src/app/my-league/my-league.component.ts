@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MyLeagueService } from '../Services/myleague.service';
+import { Observable } from 'rxjs';
+import { Matches } from '../matches';
 
 export interface PlayerScore {
   position: number;
@@ -31,7 +34,7 @@ const PLAYER_DATA: PlayerScore[] = [
   styleUrls: ['./my-league.component.css']
 })
 export class MyLeagueComponent implements OnInit {
-  items = Array.from({length: 100}).map((_, i)=> `Match #${i}`); 
+  matches = Array.from({length: 100}).map((_, i)=> `Match #${i}`); 
 
   displayColumns: string[] = ['position' , 'name' , 'wins' , 'loses' , 'draws' , 'points'];
   dataSource = new MatTableDataSource<PlayerScore>(PLAYER_DATA);
@@ -42,11 +45,14 @@ export class MyLeagueComponent implements OnInit {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor() { }
+  constructor(private myleagueservice: MyLeagueService) { }
+
+  match?: Observable<Matches>;
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.match = this.myleagueservice.getMatchesfromLeague();
   }
 
 }

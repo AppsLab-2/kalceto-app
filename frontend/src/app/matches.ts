@@ -1,5 +1,3 @@
-import 
-
 export interface Matches {
     leagueId: number;
     player1Id: number;

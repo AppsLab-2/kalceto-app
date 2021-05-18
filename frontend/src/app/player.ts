@@ -1,4 +1,4 @@
-import { League } from "../league";
+import { League } from "./league";
 
 export interface Player {
     id: number;

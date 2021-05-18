@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Matches } from '../matches';
+import { League } from '../league';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class MyLeagueService {
 
   constructor(private httpclient: HttpClient) { }
 
-  getMatchesfromLeague() {
-    return this.httpclient.get<Matches>(`${this.url}/getMatchesFromLeague/${}`);
+  getMatchesfromLeague(league: League) {
+    return this.httpclient.get<Matches>(`${this.url}/getMatchesFromLeague/${league.id}`);
   }
 
 

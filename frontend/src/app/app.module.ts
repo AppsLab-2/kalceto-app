@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
-import { RegstrationComponent } from './regstration/regstration.component';
+import { RegistrationComponent } from './registration/registration.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { PortalModule } from '@angular/cdk/portal';
@@ -55,7 +55,7 @@ const materialModules = [
     MyLeagueComponent,
     EditMatchComponent,
     LoginComponent,
-    RegstrationComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

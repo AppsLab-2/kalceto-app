@@ -1,4 +1,4 @@
-import { Player } from "./Services/player";
+import { Player } from "./player";
 
 export interface League {
     id: number;
