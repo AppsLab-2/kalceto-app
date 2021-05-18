@@ -16,9 +16,36 @@ import { AuthInterceptor } from './interseptor/auth.interceptor';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+
+import { RegstrationComponent } from './regstration/regstration.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { PortalModule } from '@angular/cdk/portal';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+const materialModules = [
+  CdkTreeModule,
+  OverlayModule,
+  PortalModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDividerModule,
+  MatExpansionModule,
+
+];
 
 @NgModule({
   declarations: [
@@ -28,6 +55,7 @@ import { MatSortModule } from '@angular/material/sort';
     MyLeagueComponent,
     EditMatchComponent,
     LoginComponent,
+    RegstrationComponent,
   ],
   imports: [
     BrowserModule,
