@@ -4,6 +4,7 @@ import com.backend.backendkalceto.exception.GenericException;
 import com.backend.backendkalceto.league.League;
 import com.backend.backendkalceto.league.LeagueRepository;
 import com.backend.backendkalceto.player.Player;
+import com.backend.backendkalceto.player.PlayerRepository;
 import com.backend.backendkalceto.player.PlayerService;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,13 @@ public class MatchesServiceImpl implements MatchesService {
     MatchesRepository matchRepository;
     LeagueRepository leagueRepository;
     PlayerService playerService;
+    PlayerRepository playerRepository;
 
-    public MatchesServiceImpl(MatchesRepository matchRepository, LeagueRepository leagueRepository, PlayerService playerService) {
+    public MatchesServiceImpl(MatchesRepository matchRepository, LeagueRepository leagueRepository, PlayerService playerService, PlayerRepository playerRepository) {
         this.matchRepository = matchRepository;
         this.leagueRepository = leagueRepository;
         this.playerService = playerService;
+        this.playerRepository = playerRepository;
     }
 
     @Override
@@ -70,5 +73,34 @@ public class MatchesServiceImpl implements MatchesService {
     public List<Matches> getMatchesFromLeague(long leagueId) {
         List<Matches> matches = matchRepository.findAllByLeagueId(leagueId);
         return matches;
+    }
+
+    @Override
+    public void endMatch(long matchId) {
+        Matches matches = matchRepository.findById(matchId).get();
+        matches.setPlayer2Score(matchId);
+//        Player player1 = playerRepository.findById(matches.getPlayer1Id()).get();
+//        Player player2 = playerRepository.findById(matches.getPlayer2Id()).get();
+//        player1.setGoals(player1.getGoals()+matches.getPlayer1Score());
+//        player2.setGoals(player2.getGoals()+matches.getPlayer2Score());
+//
+//        if(matches.getPlayer1Score() > matches.getPlayer2Score()){
+//            player1.setWins(player1.getWins()+1);
+//            player1.setPoints(player1.getPoints()+3);
+//            player2.setLosses(player2.getLosses()+1);
+//        }
+//
+//        if(matches.getPlayer1Score() < matches.getPlayer2Score()){
+//            player2.setWins(player2.getWins()+1);
+//            player2.setPoints(player2.getPoints()+3);
+//            player1.setLosses(player1.getLosses()+1);
+//        }
+//
+//        if(matches.getPlayer1Score() == matches.getPlayer2Score()){
+//            player1.setDraws(player1.getDraws()+1);
+//            player1.setPoints(player1.getPoints()+1);
+//            player2.setDraws(player2.getDraws()+1);
+//            player2.setPoints(player2.getPoints()+1);
+//        }
     }
 }

@@ -30,4 +30,9 @@ public class MatchesController {
     public List<Matches> getMatchesFromLeague(@RequestParam long leagueId) {
         return matchService.getMatchesFromLeague(leagueId);
     }
+
+    @PostMapping(value = "/endMatch")
+    public void endMatch(@RequestParam long matchId){
+        matchService.endMatch(matchId);
+    }
 }

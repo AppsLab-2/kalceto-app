@@ -22,6 +22,7 @@ public class Player {
     private long losses;
     private long draws;
     private long goals;
+    private  long points;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -39,13 +40,14 @@ public class Player {
     @OneToMany(mappedBy="player")
     private Set<League> league;
 
-    public Player(String username, String password, long wins, long losses, long draws, long goals) {
+    public Player(String username, String password) {
         this.username = username;
         this.password = password;
-        this.wins = wins;
-        this.losses = losses;
-        this.draws = draws;
-        this.goals = goals;
+        this.wins = 0;
+        this.losses = 0;
+        this.draws = 0;
+        this.goals = 0;
+        this.points = 0;
     }
 
     public Player() {}
@@ -112,5 +114,13 @@ public class Player {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getPoints() {
+        return points;
+    }
+
+    public void setPoints(long points) {
+        this.points = points;
     }
 }

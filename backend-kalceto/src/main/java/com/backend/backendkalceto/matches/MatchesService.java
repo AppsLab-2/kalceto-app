@@ -12,4 +12,5 @@ public interface MatchesService {
     void generateMatch(long leagueId);
     void setPlayerScore(long matchId, long player1Score, long player2Score, Principal principal) throws GenericException;
     List<Matches> getMatchesFromLeague(long leagueId);
+    void endMatch(long matchId);
 }
