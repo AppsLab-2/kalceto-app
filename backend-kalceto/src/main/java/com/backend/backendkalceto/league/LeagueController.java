@@ -1,11 +1,13 @@
 package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.exception.GenericException;
+import com.backend.backendkalceto.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class LeagueController {
@@ -41,4 +43,8 @@ public class LeagueController {
         leagueService.changeLeagueName(leagueId, leagueName, principal);
     }
 
+    @GetMapping(value = "/getPlayersFromLeague")
+    public Set<Player> getPlayersFromLeague(@RequestParam long leagueId) {
+        return leagueService.getPlayersFromLeague(leagueId);
+    }
 }

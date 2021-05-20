@@ -1,12 +1,14 @@
 package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.exception.GenericException;
+import com.backend.backendkalceto.player.Player;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface LeagueService {
     League saveLeague(League league);
@@ -16,4 +18,5 @@ public interface LeagueService {
     void assignPlayerToLeagues(long leagueId, long playerId);
     void createLeague(League league, Principal principal);
     void changeLeagueName(long leagueId, String leagueName, Principal principal) throws GenericException;
+    Set<Player> getPlayersFromLeague(long leagueId);
 }

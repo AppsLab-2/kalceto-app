@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface PlayerService {
 
@@ -14,6 +15,5 @@ public interface PlayerService {
     Optional<Player> getPLayerByUsername(String username);
     void getSignedInPlayer();
     boolean ifPlayerExistsByUsername(String username);
-    List<Player> getPLayersFromLeague(Long leagueId);
 
 }

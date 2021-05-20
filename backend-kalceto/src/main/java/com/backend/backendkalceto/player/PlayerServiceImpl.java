@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -60,8 +61,4 @@ public class PlayerServiceImpl implements PlayerService {
         return getPLayerByUsername(username).isPresent();
     }
 
-    @Override
-    public List<Player> getPLayersFromLeague(Long leagueId) {
-        return null;
-    }
 }

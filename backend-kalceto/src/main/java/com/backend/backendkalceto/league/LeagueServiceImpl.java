@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class LeagueServiceImpl implements LeagueService{
@@ -76,5 +77,11 @@ public class LeagueServiceImpl implements LeagueService{
         else{
             throw new GenericException("User is not the admin of this league");
         }
+    }
+
+    @Override
+    public Set<Player> getPlayersFromLeague(long leagueId) {
+        League league  = leagueRepository.findById(leagueId).get();
+        return league.players;
     }
 }
