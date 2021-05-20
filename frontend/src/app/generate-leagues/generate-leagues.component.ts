@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { League } from '../league';
 import { LeagueService } from '../Services/league.service';
+import { Player } from '../player';
 
 
 @Component({
@@ -14,6 +15,8 @@ export class GenerateLeaguesComponent implements OnInit {
   leagueForm = new FormGroup({
     leagueName: new FormControl("", Validators.required)
   });
+
+  newplayer?: Player; 
 
   get submit(): boolean {
     return this.leagueForm.valid;

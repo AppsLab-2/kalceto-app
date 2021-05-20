@@ -12,8 +12,8 @@ export class MyLeagueService {
 
   constructor(private httpclient: HttpClient) { }
 
-  getMatchesfromLeague(league: League) {
-    return this.httpclient.get<Matches>(`${this.url}/getMatchesFromLeague/${league.id}`);
+  getMatchesfromLeague() {
+    return this.httpclient.get<Matches>(this.url + "/getMatchesFromLeague");
   }
 
 

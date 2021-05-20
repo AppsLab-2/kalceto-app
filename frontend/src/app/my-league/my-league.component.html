@@ -40,7 +40,7 @@
   
   <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
     <div>
-      <ul id="list_of_matches" *cdkVirtualFor="let match of matches" class="example-item">
+      <ul id="list_of_matches" *cdkVirtualFor="let match of matches" class="match-in-league">
         <p [routerLink]="['/edit-match']">{{match}}</p>
       </ul>
     </div>
