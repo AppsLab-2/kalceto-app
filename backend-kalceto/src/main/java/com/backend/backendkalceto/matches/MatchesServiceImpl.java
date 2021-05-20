@@ -77,30 +77,29 @@ public class MatchesServiceImpl implements MatchesService {
 
     @Override
     public void endMatch(long matchId) {
-        Matches matches = matchRepository.findById(matchId).get();
-        matches.setPlayer2Score(matchId);
-//        Player player1 = playerRepository.findById(matches.getPlayer1Id()).get();
-//        Player player2 = playerRepository.findById(matches.getPlayer2Id()).get();
-//        player1.setGoals(player1.getGoals()+matches.getPlayer1Score());
-//        player2.setGoals(player2.getGoals()+matches.getPlayer2Score());
-//
-//        if(matches.getPlayer1Score() > matches.getPlayer2Score()){
-//            player1.setWins(player1.getWins()+1);
-//            player1.setPoints(player1.getPoints()+3);
-//            player2.setLosses(player2.getLosses()+1);
-//        }
-//
-//        if(matches.getPlayer1Score() < matches.getPlayer2Score()){
-//            player2.setWins(player2.getWins()+1);
-//            player2.setPoints(player2.getPoints()+3);
-//            player1.setLosses(player1.getLosses()+1);
-//        }
-//
-//        if(matches.getPlayer1Score() == matches.getPlayer2Score()){
-//            player1.setDraws(player1.getDraws()+1);
-//            player1.setPoints(player1.getPoints()+1);
-//            player2.setDraws(player2.getDraws()+1);
-//            player2.setPoints(player2.getPoints()+1);
-//        }
+        Matches match = matchRepository.findById(matchId).get();
+        Player player1 = playerRepository.findById(match.getPlayer1Id()).get();
+        Player player2 = playerRepository.findById(match.getPlayer2Id()).get();
+        player1.setGoals(player1.getGoals()+match.getPlayer1Score());
+        player2.setGoals(player2.getGoals()+match.getPlayer2Score());
+
+        if(match.getPlayer1Score() > match.getPlayer2Score()){
+            player1.setWins(player1.getWins()+1);
+            player1.setPoints(player1.getPoints()+3);
+            player2.setLosses(player2.getLosses()+1);
+        }
+
+        if(match.getPlayer1Score() < match.getPlayer2Score()){
+            player2.setWins(player2.getWins()+1);
+            player2.setPoints(player2.getPoints()+3);
+            player1.setLosses(player1.getLosses()+1);
+        }
+
+        if(match.getPlayer1Score() == match.getPlayer2Score()){
+            player1.setDraws(player1.getDraws()+1);
+            player1.setPoints(player1.getPoints()+1);
+            player2.setDraws(player2.getDraws()+1);
+            player2.setPoints(player2.getPoints()+1);
+        }
     }
 }
