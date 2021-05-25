@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService} from '../Services/auth.service'
 import { Router } from '@angular/router';
-import { AuthService } from '../Services/auth.service';
-import { Player } from '../logged-player';
 import { PlayerService } from '../Services/player.service';
+import { Player } from '../player';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-front-page',
+  templateUrl: './front-page.component.html',
+  styleUrls: ['./front-page.component.css']
 })
-export class LoginComponent implements OnInit {
+export class FrontPageComponent implements OnInit {
+  showContent: number = 0;
   showFiller = false;
 
   loginGroup = new FormGroup( {
