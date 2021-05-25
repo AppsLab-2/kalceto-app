@@ -18,6 +18,7 @@ public class Matches {
     private long id;
     private long player1Score;
     private long player2Score;
+    private boolean matchEnded;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="league_id", nullable=false, insertable = false, updatable = false)
@@ -49,6 +50,7 @@ public class Matches {
         this.leagueId = leagueId;
         this.player1Id = player1Id;
         this.player2Id = player2Id;
+        this.matchEnded = false;
     }
 
     public long getId() {
@@ -105,5 +107,13 @@ public class Matches {
 
     public void setPlayer2Id(long player2Id) {
         this.player2Id = player2Id;
+    }
+
+    public boolean isMatchEnded() {
+        return matchEnded;
+    }
+
+    public void setMatchEnded(boolean matchEnded) {
+        this.matchEnded = matchEnded;
     }
 }

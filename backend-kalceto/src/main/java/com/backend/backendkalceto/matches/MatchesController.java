@@ -35,4 +35,9 @@ public class MatchesController {
     public void endMatch(@RequestParam long matchId){
         matchService.endMatch(matchId);
     }
+
+    @PostMapping(value = "/test")
+    public void test(@RequestParam long matchId){
+        matchService.endMatch(matchId);
+    }
 }

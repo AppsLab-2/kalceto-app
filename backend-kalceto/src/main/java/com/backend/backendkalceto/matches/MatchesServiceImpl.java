@@ -6,6 +6,8 @@ import com.backend.backendkalceto.league.LeagueRepository;
 import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerRepository;
 import com.backend.backendkalceto.player.PlayerService;
+import com.backend.backendkalceto.point.Point;
+import com.backend.backendkalceto.point.PointRepository;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -20,12 +22,14 @@ public class MatchesServiceImpl implements MatchesService {
     LeagueRepository leagueRepository;
     PlayerService playerService;
     PlayerRepository playerRepository;
+    PointRepository pointRepository;
 
-    public MatchesServiceImpl(MatchesRepository matchRepository, LeagueRepository leagueRepository, PlayerService playerService, PlayerRepository playerRepository) {
+    public MatchesServiceImpl(MatchesRepository matchRepository, LeagueRepository leagueRepository, PlayerService playerService, PlayerRepository playerRepository, PointRepository pointRepository) {
         this.matchRepository = matchRepository;
         this.leagueRepository = leagueRepository;
         this.playerService = playerService;
         this.playerRepository = playerRepository;
+        this.pointRepository = pointRepository;
     }
 
     @Override
@@ -82,6 +86,8 @@ public class MatchesServiceImpl implements MatchesService {
         Player player2 = playerRepository.findById(match.getPlayer2Id()).get();
         player1.setGoals(player1.getGoals()+match.getPlayer1Score());
         player2.setGoals(player2.getGoals()+match.getPlayer2Score());
+        match.setMatchEnded(true);
+        Iterable<Point> points = pointRepository.findAll();
 
         if(match.getPlayer1Score() > match.getPlayer2Score()){
             player1.setWins(player1.getWins()+1);
@@ -101,5 +107,8 @@ public class MatchesServiceImpl implements MatchesService {
             player2.setDraws(player2.getDraws()+1);
             player2.setPoints(player2.getPoints()+1);
         }
+
+        playerService.savePlayer(player1);
+        playerService.savePlayer(player2);
     }
 }

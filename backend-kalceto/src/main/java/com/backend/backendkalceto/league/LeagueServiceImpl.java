@@ -5,6 +5,8 @@ import com.backend.backendkalceto.matches.MatchesService;
 import com.backend.backendkalceto.player.Player;
 import com.backend.backendkalceto.player.PlayerService;
 
+import com.backend.backendkalceto.point.Point;
+import com.backend.backendkalceto.point.PointRepository;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
@@ -18,11 +20,13 @@ public class LeagueServiceImpl implements LeagueService{
     LeagueRepository leagueRepository;
     PlayerService playerService;
     MatchesService matchesService;
+    PointRepository pointRepository;
 
-    public LeagueServiceImpl(LeagueRepository leagueRepository, PlayerService playerService, MatchesService matchesService) {
+    public LeagueServiceImpl(LeagueRepository leagueRepository, PlayerService playerService, MatchesService matchesService, PointRepository pointRepository) {
         this.leagueRepository = leagueRepository;
         this.playerService = playerService;
         this.matchesService = matchesService;
+        this.pointRepository = pointRepository;
     }
 
     @Override
@@ -57,6 +61,12 @@ public class LeagueServiceImpl implements LeagueService{
         Player player = playerService.getPlayerById(playerId).get();
         player.getLeagues().add(league);
         league.getPlayers().add(player);
+
+        Point point = new Point();
+        point.setLeagueId(leagueId);
+        point.setPlayerId(playerId);
+        pointRepository.save(point);
+
         saveLeague(league);
     }
 

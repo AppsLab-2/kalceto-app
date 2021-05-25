@@ -2,6 +2,7 @@ package com.backend.backendkalceto.league;
 
 import com.backend.backendkalceto.matches.Matches;
 import com.backend.backendkalceto.player.Player;
+import com.backend.backendkalceto.point.Point;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
