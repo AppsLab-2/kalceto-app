@@ -41,7 +41,23 @@
   <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
     <div>
       <ul id="list_of_matches" *cdkVirtualFor="let match of matches" class="match-in-league">
-        <p [routerLink]="['/edit-match']">{{match}}</p>
+        <ul class="player-score">
+        <li *ngFor="let player of player" 
+          [class.selected]="player === selectedPlayer"
+          (click)="onSelect(player)">
+       </li>
+      </ul>
+
+        <div *ngIf="selectedPlayer">
+
+          <div><span>Id: </span>{{selectedPlayer.name}}</div>
+          <div><span>Id: </span>{{selectedPlayer.name}}</div>
+          <div>
+            <label for="player1-score">Player 1 score: </label>
+            <label for="player2-score">Player 2 score: </label>
+            <input id="player1-score" [(ngModel)]="selectedPlayer.goals">
+          </div>
+        </div>
       </ul>
     </div>
   </cdk-virtual-scroll-viewport>

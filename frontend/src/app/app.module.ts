@@ -10,7 +10,6 @@ import { GenerateLeaguesComponent } from './generate-leagues/generate-leagues.co
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyLeagueComponent } from './my-league/my-league.component';
-import { EditMatchComponent } from './edit-match/edit-match.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './interseptor/auth.interceptor';
 import { RouterModule } from '@angular/router';
@@ -30,6 +29,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatchDetailComponent } from './match-detail/match-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +37,10 @@ import { MatButtonModule } from '@angular/material/button';
     LeaguesComponent,
     GenerateLeaguesComponent,
     MyLeagueComponent,
-    EditMatchComponent,
     LoginComponent,
     RegistrationComponent,
     FrontPageComponent,
+    MatchDetailComponent,
   ],
   imports: [
     BrowserModule,

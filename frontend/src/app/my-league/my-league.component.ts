@@ -3,8 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MyLeagueService } from '../Services/myleague.service';
-import { Observable } from 'rxjs';
+import { Observable} from 'rxjs';
 import { Matches } from '../matches';
+import { Player } from '../player';
 
 export interface PlayerScore {
   position: number;
@@ -47,12 +48,18 @@ export class MyLeagueComponent implements OnInit {
 
   constructor(private myleagueservice: MyLeagueService) { }
 
-  match?: Observable<Matches>;
+  player?: Observable <Player>;
+  selectedPlayer!: Player;
+  match!: Observable <Matches>;
+
+  
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.match = this.myleagueservice.getMatchesfromLeague();
   }
-
+  onSelect(player: Player): void {
+    this.selectedPlayer = player;
+  }
 }
