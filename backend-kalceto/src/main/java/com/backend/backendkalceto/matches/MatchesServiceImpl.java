@@ -87,28 +87,49 @@ public class MatchesServiceImpl implements MatchesService {
         player1.setGoals(player1.getGoals()+match.getPlayer1Score());
         player2.setGoals(player2.getGoals()+match.getPlayer2Score());
         match.setMatchEnded(true);
-        Iterable<Point> points = pointRepository.findAll();
+
+        List<Point> points= pointRepository.findByLeagueId(match.getLeagueId());
+        Point point1 = new Point();
+        Point point2 = new Point();
+
+        for(int i = 0 ; i<points.size() ; i++){
+            Point point = points.get(i);
+            if(point.getPlayerId()==player1.getId()){
+                point1 = point;
+                i = points.size()+2;
+            }
+        }
+
+        for(int i = 0 ; i<points.size() ; i++){
+            Point point = points.get(i);
+            if(point.getPlayerId()==player2.getId()){
+                point2 = point;
+                i = points.size()+2;
+            }
+        }
 
         if(match.getPlayer1Score() > match.getPlayer2Score()){
             player1.setWins(player1.getWins()+1);
-            player1.setPoints(player1.getPoints()+3);
+            point1.setPoints(point1.getPoints()+3);
             player2.setLosses(player2.getLosses()+1);
         }
 
         if(match.getPlayer1Score() < match.getPlayer2Score()){
             player2.setWins(player2.getWins()+1);
-            player2.setPoints(player2.getPoints()+3);
+            point2.setPoints(point2.getPoints()+3);
             player1.setLosses(player1.getLosses()+1);
         }
 
         if(match.getPlayer1Score() == match.getPlayer2Score()){
             player1.setDraws(player1.getDraws()+1);
-            player1.setPoints(player1.getPoints()+1);
+            point1.setPoints(point1.getPoints()+1);
             player2.setDraws(player2.getDraws()+1);
-            player2.setPoints(player2.getPoints()+1);
+            point2.setPoints(point2.getPoints()+1);
         }
 
         playerService.savePlayer(player1);
         playerService.savePlayer(player2);
+        pointRepository.save(point1);
+        pointRepository.save(point2);
     }
 }

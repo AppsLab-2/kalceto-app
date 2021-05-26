@@ -32,6 +32,9 @@ public class League {
     @Column(name = "admin_id")
     private long adminId;
 
+    @OneToMany(mappedBy="league1")
+    private Set<Point> points;
+
     public League(long id, String leagueName, Set<Matches> matches, Set<Player> players, Player player, long adminId) {
         this.id = id;
         this.leagueName = leagueName;

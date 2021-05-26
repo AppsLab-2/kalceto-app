@@ -2,6 +2,7 @@ package com.backend.backendkalceto.player;
 
 import com.backend.backendkalceto.league.League;
 import com.backend.backendkalceto.matches.Matches;
+import com.backend.backendkalceto.point.Point;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -22,7 +23,6 @@ public class Player {
     private long losses;
     private long draws;
     private long goals;
-    private  long points;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -40,6 +40,9 @@ public class Player {
     @OneToMany(mappedBy="player")
     private Set<League> league;
 
+    @OneToMany(mappedBy="playerPoint")
+    private Set<Point> points;
+
     public Player(String username, String password) {
         this.username = username;
         this.password = password;
@@ -47,7 +50,6 @@ public class Player {
         this.losses = 0;
         this.draws = 0;
         this.goals = 0;
-        this.points = 0;
     }
 
     public Player() {}
@@ -114,13 +116,5 @@ public class Player {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public long getPoints() {
-        return points;
-    }
-
-    public void setPoints(long points) {
-        this.points = points;
     }
 }
