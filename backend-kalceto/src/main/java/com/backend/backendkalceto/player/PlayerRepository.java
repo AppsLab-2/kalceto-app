@@ -8,4 +8,5 @@ import java.util.Set;
 
 public interface PlayerRepository extends CrudRepository<Player, Long> {
     Optional<Player> findByUsername(String username);
+    Player findPlayerById(long playerId);
 }

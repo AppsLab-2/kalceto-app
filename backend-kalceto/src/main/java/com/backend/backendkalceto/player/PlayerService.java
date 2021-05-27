@@ -15,5 +15,6 @@ public interface PlayerService {
     Optional<Player> getPLayerByUsername(String username);
     void getSignedInPlayer();
     boolean ifPlayerExistsByUsername(String username);
+    List<Player> getPlayersFromLeague(long leagueId);
 
 }

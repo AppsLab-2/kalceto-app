@@ -9,11 +9,12 @@ import javax.persistence.*;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
-public class Point {
+public class Point{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private long points;
+    private long position;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,11 +36,13 @@ public class Point {
         this.points = 0;
     }
 
-    public Point(long leagueId, long playerId, long points) {
+    public Point(long leagueId, long playerId, long points, long position) {
         this.leagueId = leagueId;
         this.playerId = playerId;
         this.points = points;
+        this.position = position;
     }
+
 
     public long getLeagueId() {
         return leagueId;
@@ -88,4 +91,13 @@ public class Point {
     public void setPlayerPoint(Player playerPoint) {
         this.playerPoint = playerPoint;
     }
+
+    public long getPosition() {
+        return position;
+    }
+
+    public void setPosition(long position) {
+        this.position = position;
+    }
+
 }

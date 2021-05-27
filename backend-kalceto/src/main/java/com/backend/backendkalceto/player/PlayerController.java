@@ -48,4 +48,8 @@ public class PlayerController {
         return playerService.getAllPlayers();
     }
 
+    @GetMapping(value = "/getPlayersFromLeagueSortedByPoints")
+    public List<Player> getPlayersFromLeagueSortedByPoints(long leagueId) {
+        return playerService.getPlayersFromLeague(leagueId);
+    }
 }
