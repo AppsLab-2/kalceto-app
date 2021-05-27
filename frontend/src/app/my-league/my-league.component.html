@@ -42,7 +42,7 @@
     <div>
       <ul id="list_of_matches" *cdkVirtualFor="let match of matches" class="match-in-league">
         <ul class="player-score">
-        <li *ngFor="let player of player" 
+          <li *ngFor = "let player of player"
           [class.selected]="player === selectedPlayer"
           (click)="onSelect(player)">
        </li>

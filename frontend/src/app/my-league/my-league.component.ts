@@ -6,15 +6,7 @@ import { MyLeagueService } from '../Services/myleague.service';
 import { Observable} from 'rxjs';
 import { Matches } from '../matches';
 import { Player } from '../player';
-
-export interface PlayerScore {
-  position: number;
-  name: string;
-  wins: number;
-  loses: number;
-  draws: number;
-  points: number;
-}
+import { PlayerScore } from '../playerscore';
 
 const PLAYER_DATA: PlayerScore[] = [
   {position: 1, name: 'Player1', wins: 10, loses: 0, draws:0, points:30},
@@ -50,7 +42,7 @@ export class MyLeagueComponent implements OnInit {
 
   player?: Observable <Player>;
   selectedPlayer!: Player;
-  match!: Observable <Matches>;
+  match?: Observable <Matches>;
 
   
 

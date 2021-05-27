@@ -11,6 +11,8 @@ import { Player } from '../player';
   styleUrls: ['./front-page.component.css']
 })
 export class FrontPageComponent implements OnInit {
+  public loginForm: any;
+  public registrationForm: any;
   showContent: number = 0;
   showFiller = false;
 
@@ -25,6 +27,18 @@ export class FrontPageComponent implements OnInit {
     private playerservice: PlayerService
     ) { }
 
+    private createForms(){
+      this.loginForm = new FormGroup({
+        'name': new FormControl(),
+        'password': new FormControl()
+      });
+      this.registrationForm = new FormGroup({
+        'name': new FormControl(),
+        'password': new FormControl(),
+        'second password': new FormControl()
+      });
+    }
+
     login(): void {
       if (this.loginGroup.valid) {
         const username = this.loginGroup.value.username;
@@ -36,6 +50,11 @@ export class FrontPageComponent implements OnInit {
  
   player: Player | undefined;
   ngOnInit(): void {
+  }
+
+  changeContent(num: number){
+    this.createForms();
+    this.showContent = num;
   }
 
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EditMatchComponent } from './edit-match/edit-match.component';
 import { GenerateLeaguesComponent } from './generate-leagues/generate-leagues.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LeaguesComponent } from './leagues/leagues.component';
@@ -14,7 +13,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch:'full' },
   { path: 'my-league/:id', component: MyLeagueComponent },
-  { path: 'edit-match', component: EditMatchComponent },
   { path: 'registration', component: RegistrationComponent },
 ];
 
