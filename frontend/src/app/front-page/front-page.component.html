@@ -12,7 +12,41 @@
 
         <div *ngIf="showContent == 1" class="page">
             <h1 style="color: white;">Login</h1>
+            <div>
+                <mat-form-field style="margin-right: 10px;">
+                    <mat-label>Name</mat-label>
+                    <input matInput [formControl]="loginForm.get('name')" autocomplete="off" required>
+                    <mat-error *ngIf="loginForm.get('name').errors !=null">You must enter a name</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput [formGroup]="loginForm.get('password')" autocomplete="off" required>
+                    <mat-error *ngIf="loginForm.get('password').errors !=null">You must enter a password</mat-error>
+                </mat-form-field>
+                <button mat-stroked-button color="primary" style="margin-top: 10px;" [disabled]="loginIsValid()" (click)="login">Login</button>
+            </div>
+
+            <div *ngIf="showContent == 2" class="page">
+                <h1 style="color: white;">New Account</h1>
+                <div>
+                    <mat-form-field style="margin-top: 10px;">
+                        <mat-label>Name</mat-label>
+                        <input matInput [formControl]="registrationForm.get('name')" autocomplete="off" required>
+                        <mat-error *ngIf="registrationForm.get('name').errors !=null">You must enter a name</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" [formControl]="registrationForm.get('password')" autocomplete="off" required>
+                        <mat-error *ngIf="registrationForm.get('password').errors !=null">You must enter a password</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Second Password</mat-label>
+                        <input matInput type="password" [formControl]="registrationForm.get('repeat')" autocomplete="off" required>
+                        <mat-error *ngIf="hasError()">{{hasError()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <button mat-stroked-button color="primary" style="margin-top: 10px;" [disabled]="registerIsValid()" (click)="register">Register</button>
+            </div>
         </div>
-           
     </div>
 </div>

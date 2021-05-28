@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Player } from '../player';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,9 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   
   token: string | undefined;
+  player: Player | undefined;
+  isLogged: boolean = false;
+
 
   constructor(
     private readonly httpClient: HttpClient
@@ -35,6 +39,11 @@ login(username: string, password: string): Observable<any> {
   return this.httpClient.get('http://localhost:8080/login', options).pipe(
       tap(() => this.token = token)
   );
+}
+
+register(username: string, password: string): Observable<any> {
+  const user = { username, password };
+  return this.httpClient.post(`${"http://localhost:8080/postUser"}`, user);
 }
 
  logout() {

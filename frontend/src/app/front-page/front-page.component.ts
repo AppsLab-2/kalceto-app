@@ -13,6 +13,7 @@ import { Player } from '../player';
 export class FrontPageComponent implements OnInit {
   public loginForm: any;
   public registrationForm: any;
+  msg: String | undefined;
   showContent: number = 0;
   showFiller = false;
 
@@ -20,6 +21,11 @@ export class FrontPageComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
+
+  registerGroup = new FormGroup({
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  })
 
   constructor(
     private readonly authService: AuthService,
@@ -47,14 +53,50 @@ export class FrontPageComponent implements OnInit {
           .subscribe(() => this.router.navigateByUrl('/leagues'));
       }
     }
+
+    loginSuccess(res: Player){
+      this.authService.player = res;
+      this.authService.isLogged = true;
+      this.showContent = 3;
+    }
+
+    register(): void {
+      if (this.registerGroup.valid) {
+        const username = this.registerGroup.value.username;
+        const password = this.registerGroup.value.username;
+        this.authService.register(username, password)
+          .subscribe(() => {
+            this.authService.login(username, password)
+              .subscribe(() => this.router.navigateByUrl('/front-page'));
+          });
+      }
+    }
  
   player: Player | undefined;
   ngOnInit(): void {
+    if (this.authService.isLogged) this.showContent = 3;
+    this.createForms();
   }
 
   changeContent(num: number){
     this.createForms();
     this.showContent = num;
+    delete this.msg;
+  }
+
+  hasError(): string{
+    if (this.registrationForm.get('password') != this.registrationForm.get('repeat')){
+      return "Password don't match";
+    }
+    return this.registrationForm.get('password').errors == null ? null : "You must enter a value";
+  }
+
+  loginIsValid(): boolean{
+    return this.loginForm.get('name').errors !=null || this.loginForm.get('password').errors !=null;
+  }
+
+  registerIsValid(): boolean{
+    return this.loginForm.get('name').errors !=null || this.registrationForm.get('password').errors !=null || this.registrationForm.get('repeat').errors !=null;
   }
 
 }
