@@ -1,5 +1,6 @@
 package com.backend.backendkalceto.player;
 
+import com.backend.backendkalceto.dto.PlayerDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,6 @@ public interface PlayerService {
     Optional<Player> getPLayerByUsername(String username);
     void getSignedInPlayer();
     boolean ifPlayerExistsByUsername(String username);
-    List<Player> getPlayersFromLeague(long leagueId);
+    List<PlayerDto> getPlayersFromLeague(long leagueId);
 
 }

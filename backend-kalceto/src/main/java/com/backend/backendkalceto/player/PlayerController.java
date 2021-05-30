@@ -1,5 +1,6 @@
 package com.backend.backendkalceto.player;
 
+import com.backend.backendkalceto.dto.PlayerDto;
 import com.backend.backendkalceto.exception.GenericException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -49,7 +50,7 @@ public class PlayerController {
     }
 
     @GetMapping(value = "/getPlayersFromLeagueSortedByPoints")
-    public List<Player> getPlayersFromLeagueSortedByPoints(long leagueId) {
+    public List<PlayerDto> getPlayersFromLeagueSortedByPoints(long leagueId) {
         return playerService.getPlayersFromLeague(leagueId);
     }
 }

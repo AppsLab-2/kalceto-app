@@ -1,5 +1,6 @@
 package com.backend.backendkalceto.player;
 
+import com.backend.backendkalceto.dto.PlayerDto;
 import com.backend.backendkalceto.point.Point;
 import com.backend.backendkalceto.point.PointService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,10 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -67,14 +65,20 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public List<Player> getPlayersFromLeague(long leagueId) {
+    public List<PlayerDto> getPlayersFromLeague(long leagueId) {
         List<Player> players = new ArrayList<>();
         List<Point> points = pointService.sortByPoints(leagueId);
-        for(int i = 0;i<points.size();i++){
+        List<PlayerDto> playerDtoList = new ArrayList<>();
+        for(int i = 0;i<points.size();i++) {
             players.add(playerRepository.findPlayerById(points.get(i).getPlayerId()));
+            PlayerDto playerDto = new PlayerDto(players.get(i).getId(), players.get(i).getUsername(), players.get(i).getPassword(), players.get(i).getWins(), players.get(i).getLosses(), players.get(i).getDraws(), players.get(i).getGoals(), points.get(i).getPoints());
+            playerDtoList.add(playerDto);
         }
-        return players;
+//        for(int i = 0;i<players.size();i++){
+//            PlayerDto playerDto = new PlayerDto(players.get(i).getId(), players.get(i).getUsername(), players.get(i).getPassword(), players.get(i).getWins(), players.get(i).getLosses(), players.get(i).getDraws(), players.get(i).getGoals());
+//            playerDtoList.add(playerDto);
+//        }
+        return playerDtoList;
     }
-
 
 }
