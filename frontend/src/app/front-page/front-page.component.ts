@@ -74,29 +74,5 @@ export class FrontPageComponent implements OnInit {
  
   player: Player | undefined;
   ngOnInit(): void {
-    if (this.authService.isLogged) this.showContent = 3;
-    this.createForms();
   }
-
-  changeContent(num: number){
-    this.createForms();
-    this.showContent = num;
-    delete this.msg;
-  }
-
-  hasError(): string{
-    if (this.registrationForm.get('password') != this.registrationForm.get('repeat')){
-      return "Password don't match";
-    }
-    return this.registrationForm.get('password').errors == null ? null : "You must enter a value";
-  }
-
-  loginIsValid(): boolean{
-    return this.loginForm.get('name').errors !=null || this.loginForm.get('password').errors !=null;
-  }
-
-  registerIsValid(): boolean{
-    return this.loginForm.get('name').errors !=null || this.registrationForm.get('password').errors !=null || this.registrationForm.get('repeat').errors !=null;
-  }
-
 }
