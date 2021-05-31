@@ -22,11 +22,6 @@ export class FrontPageComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  registerGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  })
-
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
@@ -58,18 +53,6 @@ export class FrontPageComponent implements OnInit {
       this.authService.player = res;
       this.authService.isLogged = true;
       this.showContent = 3;
-    }
-
-    register(): void {
-      if (this.registerGroup.valid) {
-        const username = this.registerGroup.value.username;
-        const password = this.registerGroup.value.username;
-        this.authService.register(username, password)
-          .subscribe(() => {
-            this.authService.login(username, password)
-              .subscribe(() => this.router.navigateByUrl('/front-page'));
-          });
-      }
     }
  
   player: Player | undefined;
